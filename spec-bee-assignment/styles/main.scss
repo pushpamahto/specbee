@@ -1,0 +1,184 @@
+// Variables
+$modal-background: rgba(0, 0, 0, 0.5);
+$modal-content-bg: white;
+$modal-close-color: black;
+$arrow-color: #333;
+$arrow-size: 2rem;
+
+// General Styling
+body {
+    font-family: Arial, sans-serif;
+}
+
+.speakers {
+    text-align: center;
+    padding: 2rem;
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    &__link {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    // Slider Styling
+    &__slider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .speakers__slider {
+            display: flex;
+            gap: 1rem;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .speaker__card {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            min-width: 250px;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            .speaker__image {
+                width: 50%;
+                height: 100px;
+                object-fit:fill;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+            }
+
+            .speaker__name,
+            .speaker__role,
+            .speaker__company {
+                margin: 0.5rem 0;
+            }
+        }
+    }
+
+    .arrow {
+        background-color: transparent;
+        border: none;
+        font-size: $arrow-size;
+        color: $arrow-color;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        &-left {
+            left: -20px;
+        }
+
+        &-right {
+            right: -20px;
+        }
+    }
+
+    .program-button {
+        margin-top: 6rem;
+        background-color: blue;
+        color: white;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darkblue;
+        }
+    }
+}
+
+// Modal Styling
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $modal-background;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    &__content {
+        background: $modal-content-bg;
+        padding: 2rem;
+        display: flex;
+        gap: 2rem;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 800px;
+        position: relative;
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: $arrow-size;
+            cursor: pointer;
+            color: $modal-close-color;
+        }
+
+        .modal__details {
+            display: flex;
+            gap: 2rem;
+
+            .modal__image-container {
+                flex: 1;
+            }
+
+            .modal__image {
+                width: 100%;
+                border-radius: 8px;
+            }
+
+            .modal__info {
+                flex: 2;
+
+                .modal__name {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .modal__role,
+                .modal__company,
+                .modal__description {
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .speakers__slider {
+        flex-direction: column;
+    }
+
+    .modal__content {
+        flex-direction: column;
+    }
+}
